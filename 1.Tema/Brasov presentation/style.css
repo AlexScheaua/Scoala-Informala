@@ -11,7 +11,7 @@ body {
 }
 
 .background-picture {
-  background: linear-gradient(transparent 50%, #444), url('resources/home.jpg');
+  background: linear-gradient(transparent 50%, #444), url("resources/home.jpg");
   background-repeat: no-repeat;
   height: 790px;
 }
