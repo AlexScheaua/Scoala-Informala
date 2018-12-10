@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+}
+
+.header {
+  height: 65px;
+  margin: 5px 5px;
+  border-style: dotted;
+  border-width: 1px;
+  border-color: #ddd;
+  background-color: #eee;
+}
+
+.header h1 {
+    margin: 0;
+    font-weight: 400;
+    font-size: 48px;
+    margin: 5px 5px;
+}
+
+.main {
+  display: flex;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu a {
+  margin: 5px 13px;
+}
+
+.menu a button {
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: black;
+  width: 150px;
+  height: 42px;
+  background-image: linear-gradient(#ccc, #FFF);
+  font-size: 23px;
+  font-weight: 500;
+  font-family: serif;
+}
+.content {
+  width: 100%;
+}
+h1 {
+  margin: 0;
+}
+
+.page-title {
+  padding: 0;
+  margin: 5px 10px;
+  font-size: 36px;
+}
+
+.pic-info {
+  display: flex;
+}
+
+.poets p {
+  margin: 10px;
+  font-size: 18px;
+}
+
+.poets ul li{
+  margin: 20px 0;
+  font-size: 18px;
+}
+
+hr {
+  width: 100%;
+}
+
+.footer {
+  display: flex;
+  font-size: 10px;
+  line-height: 10px;
+  margin-top: 20px;
+}
+
+.footer p {
+  margin: 0px;
+  padding: 0 5px;
+  border-right: 1px solid black;
+}
+
+.footer a {
+  padding: 0 5px;
+}

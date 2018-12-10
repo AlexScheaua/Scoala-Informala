@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+}
+
+.wrapper {
+  width: 70%;
+  margin: auto;
+  background-color: #444;
+  height: 1000px;
+  overflow: hidden;
+}
+
+.background-picture {
+  background: linear-gradient(transparent 50%, #444), url('resources/home.jpg');
+  background-repeat: no-repeat;
+  height: 790px;
+}
+
+.navbar {
+  width: 60%;
+  background-color: rgba(135,135,135,0.5);
+  transform: skew(-40deg);
+  overflow: hidden;
+  position: relative;
+  left: -25px;
+  border-radius: 5px;
+}
+
+.navbar ul {
+  margin: 0;
+  list-style: none;
+  display: flex;
+}
+
+.navbar div {
+  transform: skew(40deg);
+  display: flex;
+  justify-content: center;
+}
+
+
+.navbar li{
+    padding: 20px;
+    width: 100%;
+}
+
+.navbar li:hover {
+  transition-duration: 0.3s;
+  background-color: rgba(135,135,135,0.5);
+}
+
+.navbar a {
+  text-decoration: none;
+  font-family: arial;
+  font-weight: bolder;
+  color: #eee;
+}
+
+.background-picture h1 {
+  font-family: monospace;
+  font-size: 100px;
+  font-weight: 100;
+  letter-spacing: 10px;
+  text-align: center;
+  margin-top: 17%;
+  color: rgba(200,200,200,0.7  );
+}
