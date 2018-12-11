@@ -6,7 +6,6 @@ body {
   width: 70%;
   margin: auto;
   background-color: #444;
-  height: 1000px;
   overflow: hidden;
 }
 
@@ -76,4 +75,27 @@ body {
   text-align: center;
   margin-top: 17%;
   color: rgba(200,200,200,0.7  );
+}
+
+.article p, .article li {
+  font-size: 18px;
+  color: #ddd;
+  margin: 0 40px 50px;
+}
+
+.article p {
+  text-indent: 10px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #333;
+  height: 100px;
+}
+
+.footer p, .footer a {
+  color: #ddd;
 }
