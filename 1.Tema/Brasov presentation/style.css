@@ -10,8 +10,20 @@ body {
   overflow: hidden;
 }
 
-.background-picture {
+.background-home {
   background: linear-gradient(transparent 50%, #444), url("resources/Home.jpg");
+  background-repeat: no-repeat;
+  height: 790px;
+}
+
+.background-history {
+  background: linear-gradient(transparent 50%, #444), url("resources/History.jpg");
+  background-repeat: no-repeat;
+  height: 790px;
+}
+
+.background-about {
+  background: linear-gradient(transparent 50%, #444), url("resources/About.jpg");
   background-repeat: no-repeat;
   height: 790px;
 }
@@ -56,7 +68,7 @@ body {
   color: #eee;
 }
 
-.background-picture h1 {
+.background-home h1 {
   font-family: monospace;
   font-size: 100px;
   font-weight: 100;
