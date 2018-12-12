@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  background-color: #ddd;
 }
 
 .wrapper {
@@ -93,9 +94,82 @@ body {
   align-items: center;
   width: 100%;
   background-color: #333;
-  height: 100px;
+  height: 180px;
 }
 
 .footer p, .footer a {
   color: #ddd;
+}
+
+.footer a:hover {
+  color: #7dd;
+}
+
+.contactfooter {
+  display: flex;
+  justify-content: space-around;
+}
+
+.contactme p {
+  color: #ddd;
+  margin: 0;
+}
+
+.contactme form {
+  margin: 10px 10px;
+}
+
+.contactme form textarea {
+  resize: none;
+  margin: 5px 0;
+  width: 200px;
+  height: 40px;
+}
+
+.visit {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 40px 30px;
+}
+
+.visit-tips {
+  font-family: arial;
+  font-weight: 100;
+  color: #eee;
+  text-align: center;
+  text-shadow: 1px 1px 10px #999;
+}
+
+.visit a {
+  text-decoration: none;
+}
+
+.items {
+  width: 16vw;
+  height: 300px;
+  padding: 30px 30px;
+  margin: 5px 5px;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 5px;
+}
+
+.items:hover {
+  transition-duration: 0.5s;
+  background-color: rgba(255,255,255,0.4);
+  font-size: 20px;
+}
+
+.items h2 {
+  text-align: center;
+  font-family: arial;
+  font-weight: bolder;
+  color: #eee;
+}
+
+.items p {
+  display: flex;
+  justify-content: center;
+  color: #eee;
+  font-family: arial;
 }
