@@ -1,0 +1,159 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #e0d48a;
+}
+
+.wrapper {
+  width: 70%;
+  margin: 0 auto;
+}
+
+/* HEADER */
+
+#header {
+  height: 160px;
+  background-color: #bcda2d;
+  border: 1px solid #ddd;
+}
+
+.title {
+  padding: 20px 0 0 0;
+  max-width: 300px;
+  margin: 0 0 0 auto;
+}
+
+.title h1, .title h4 {
+  font-family: arial;
+}
+
+.title h1 {
+  margin-bottom: 5px;
+}
+
+.title h4 {
+  margin-top: 5px;
+  color: #333  ;
+}
+
+/* Content */
+
+#main {
+  margin-top: 5px;
+  padding: 10px;
+  background-color: #f0e8c3;
+}
+
+#navbar {
+  padding: 5px 5px;
+}
+
+#navbar ul {
+  margin: 0;
+  background-color: #fff;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+#navbar ul li {
+  border-right: 1px solid grey;
+  width: 15%;
+  text-align: center;
+}
+
+#navbar ul li button{
+  color: #293123;
+  background-color: transparent;
+  border: none;
+  height: 40px;
+  font-weight: bold;
+  color: #070090;
+}
+
+#navbar ul li:last-child {
+  border: none;
+}
+
+#content {
+  display: flex;
+}
+
+#left-side {
+  padding: 10px 15px 10px 10px;
+  width: 25%;
+  border-right: 1px solid #ccc;
+}
+
+#right-side {
+  width: 75%;
+}
+
+#right-side div{
+  padding: 15px;
+}
+
+.menu-header {
+  font-family: arial;
+  background-color: #d2d35e;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+#left-side ul{
+  list-style: none;
+  padding: 0 0 0 10px;
+}
+
+#left-side li {
+  text-decoration: underline;
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+
+#left-side p {
+  margin-left: 10px;
+  font-size: 18px;
+}
+
+.top-section {
+  font-size: 18px;
+}
+
+.bottom-section {
+  display: flex;
+  font-size: 18px;
+}
+
+.left-section {
+  border-right: 1px solid #ccc;
+  font-size: 18px;
+}
+
+.section-title {
+  font-family: arial;
+}
+
+.section-button {
+  font-weight: bold;
+  background-color: #bcda2d;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#footer {
+  background-color: #bcda2d;
+  height: 40px;
+}
+
+.footer-text {
+  font-size: 14px;
+  padding-top: 13px;
+  text-align: center;
+}
