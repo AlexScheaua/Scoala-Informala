@@ -1,0 +1,137 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: arial;
+  color:#484a4f;
+}
+
+body {
+  padding: 0 8px;
+}
+#menu-bar {
+  border: solid 4px #d6d6d6;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  height: 55px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.circle {
+  border: solid 3px #d6d6d6;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin: 15px;
+}
+
+#page {
+  border: solid 4px #d6d6d6;
+  background-image: url(background.jpg);
+}
+
+#wrapper {
+  margin: 0 auto;
+  width: 67%;
+}
+
+#header {
+  padding: 75px 110px 35px;
+  background-color: rgba(205, 236, 255, 0.9);
+}
+
+#header h1 {
+  font-size: 56px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.sub-title {
+  font-size: 24px;
+}
+
+#content {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding-top: 40px;
+}
+
+.input {
+  height: 50px;
+  padding: 0 10px;
+  margin: 20px 0;
+  font-size: 24px;
+}
+
+#email-box {
+  background-color: rgba(235, 235, 235, 0.9);
+  margin: 0 60px;
+  padding: 30px 40px;
+}
+
+#email-box input {
+  width: 500px;
+  margin-bottom: 40px;
+}
+
+#pers-details {
+  margin-left: 95px;
+  margin-top: 40px;
+}
+
+#pers-details input {
+  width: 240px;
+  margin-right: 20px
+}
+
+#radiobox {
+  margin-left: 95px;
+  margin-top: 20px;
+}
+
+#radiobox h3 {
+  margin-bottom: 10px;
+}
+
+#radiobox input {
+  margin: 20px 0 0;
+  transform: scale(1.7);
+  margin-left: 10px;
+}
+
+#radiobox span {
+  font-size: 22px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+
+hr {
+  border: solid 1px #eee;
+  margin: 40px;
+}
+
+#submit {
+  margin-left: 95px;
+  padding-bottom: 80px;
+}
+
+#submit button {
+  background-color: rgba(205, 236, 255, 0.9);
+  border: none;
+  border-radius: 15px;
+  padding: 20px 40px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+#submit span{
+  color: #62ca2c;
+  font-size: 22px;
+  margin-left: 10px;
+}
+
+.underlined {
+  margin: 0;
+  text-decoration: underline;
+}
