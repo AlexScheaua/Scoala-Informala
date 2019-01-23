@@ -103,14 +103,36 @@ console.log("   8.Calculeaza cel mai mare divizor comun al 2 numere");
       b = aux;
     }
     for(let i = a; i > 0; i--){
-      if(a % i === 0){
-        if(b % i === 0) {
-          return i;
-        }
+      if(a % i === 0 && b % i === 0){
       }
     }
   }
 
   console.log(mareDivizor(26,16));
 
-  console.log("   9.Calculeaza cel mai mic multiplu comun al 2 numere");
+console.log("   9.Calculeaza cel mai mic multiplu comun al 2 numere");
+  function multipluComun(a,b){
+    if(b < a){
+      var aux = a;
+      a = b;
+      b = aux;
+    }
+    for(let i = b; ;i++){
+      if(i % b === 0 && i % a === 0){
+        return i;
+      }
+    }
+  }
+
+  console.log(multipluComun(3,4));
+
+console.log("   10.Returneaza un array care sa contina toti divizorii unui numar (ex pentru 64: trebuie sa returneze [2,4,8,16,32])");
+  function totiDivizorii(n){
+    var arrFinal = [];
+    for(let i = 0; i <= n; i++){
+      if(n % i === 0){
+        arrFinal.push(i);
+      }
+    }
+    return arrFinal;
+  }
