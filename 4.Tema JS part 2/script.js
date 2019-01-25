@@ -136,3 +136,66 @@ console.log("   10.Returneaza un array care sa contina toti divizorii unui numar
     }
     return arrFinal;
   }
+
+  console.log(totiDivizorii(64));
+
+console.log("   11.O functie care verifica daca un numar este palindrom (ex: 121, 1234321)");
+	function palindrom(str) {
+    str = str + "";
+		for(let i = 0; i < str.length / 2; i++) {
+			if(str[i] !== str[str.length - i - 1]){
+				return str + " NU este palindrom";
+			}
+		}
+		return str + " este palindrom";
+	}
+
+  console.log(palindrom(1234321));
+  console.log(palindrom(12345321));
+
+console.log("   12.O functie care sorteaza numerele pare dintr-un sir de numere primit ca parametru.");
+  function sortEven(n){
+    n = n + "";
+    var arrFinal = [];
+    for(let i = 0; i < n.length; i++){
+      if(parseInt(n[i]) % 2 ===0){
+        arrFinal.push(parseInt(n[i]));
+      }
+    }
+    arrFinal.sort(function(a,b) {
+      return a - b;
+    });
+    return arrFinal;
+  }
+
+  console.log(sortEven(1236740918));
+
+// console.log("   13.O functie care primeste ca parametru un array de numere. Aceasta sorteaza ascendent numerele pare si descendent numerele impare, in cadrul aceluiasi array primit ca parameru.");
+//   function sortOddEven(a) {
+//     a.sort(function(a,b) {
+//       if(a % 2 === 0 && b % 2 === 0){
+//         return a - b;
+//       } else if(a % 2 === 1 && b % 2=== 1){
+//         if(a < b){
+//           return 1;
+//         } else if(a > b) {
+//           return -1;
+//         } else {
+//           return 0;
+//         }
+//       }
+//     });
+//     return a;
+//   }
+
+//                    BINARY SEARCH!!!!!!!!
+// console.log("    14.O functie care primeste 2 parametri(un array si un numar). Folosind binary search verificati daca numarul primit ca parametru se gaseste in array. ");
+//   function existaBinar(arr,n) {
+//     var bin = false;
+//     for(let i = 0; i < arr.length; i++){
+//       if(arr[i] === n){
+//         bin = true;
+//       }
+//     }
+//     return bin;
+//   }
