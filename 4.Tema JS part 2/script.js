@@ -170,32 +170,80 @@ console.log("   12.O functie care sorteaza numerele pare dintr-un sir de numere 
 
   console.log(sortEven(1236740918));
 
-// console.log("   13.O functie care primeste ca parametru un array de numere. Aceasta sorteaza ascendent numerele pare si descendent numerele impare, in cadrul aceluiasi array primit ca parameru.");
-//   function sortOddEven(a) {
-//     a.sort(function(a,b) {
-//       if(a % 2 === 0 && b % 2 === 0){
-//         return a - b;
-//       } else if(a % 2 === 1 && b % 2=== 1){
-//         if(a < b){
-//           return 1;
-//         } else if(a > b) {
-//           return -1;
-//         } else {
-//           return 0;
-//         }
-//       }
-//     });
-//     return a;
-//   }
+console.log("   13.O functie care primeste ca parametru un array de numere. Aceasta sorteaza ascendent numerele pare si descendent numerele impare, in cadrul aceluiasi array primit ca parameru.");
+  function sortOddEven(arr) {
+    arr.sort(function(a,b) {
+      if(a % 2 === 0 && b % 2 !== 0 || a % 2 !== 0 && b % 2 === 0){
+        return;
+      } else if(a % 2 === 0 && b % 2 === 0){
+        return a - b;
+      } else if(a % 2 !== 0 && b % 2 !== 0){
+        if(a < b){
+          return 1;
+        } else if(a > b) {
+          return -1;
+        } else {
+          return 0;
+        }
+      }
+    });
+    return arr;
+  }
 
-//                    BINARY SEARCH!!!!!!!!
-// console.log("    14.O functie care primeste 2 parametri(un array si un numar). Folosind binary search verificati daca numarul primit ca parametru se gaseste in array. ");
-//   function existaBinar(arr,n) {
-//     var bin = false;
-//     for(let i = 0; i < arr.length; i++){
-//       if(arr[i] === n){
-//         bin = true;
-//       }
-//     }
-//     return bin;
-//   }
+console.log("   14.O functie care primeste 2 parametri(un array si un numar). Folosind binary search verificati daca numarul primit ca parametru se gaseste in array. ");
+  function existaBinar(arr,n) {
+    var left = 0;
+    var right = arr.length -1
+    arr.sort(function(a,b){
+      return a - b;
+    })
+    while(left <= right){
+      var middle = parseInt((left + right)/2);
+      if(arr[middle] < n){
+        left = middle + 1;
+      } else if(arr[middle] > n){
+        right = middle - 1;
+      } else {
+        return n + " exista in array";
+      }
+    }
+    return n +" NU EXISTA IN ARRAY";
+  }
+
+  console.log(existaBinar([1,2,3,4,5,6,7,8,8],1));
+  console.log(existaBinar([1,2,3,4,5,6,7,8,8],9));
+
+console.log("   15.O functie care implementeaza binary search pentru a verifica daca un numar se regaseste intr-un array. Dupa ce se termina executia functiei trebuie sa puteti afisa de cate ori s-a apelat functia recursiv. (hint: puteti folosi 2 functii sau variabila globala)");
+  function recursivBinar(arr,n) {
+    var left = 0;
+    var right = arr.length -1
+    arr.sort(function(a,b){
+      return a - b;
+    })
+
+    var apelari = 0;
+    recursivExistaBinar(left,right);
+
+    function recursivExistaBinar(left,right){
+      if(left <= right){
+        var middle = parseInt((left + right)/2);
+        if(arr[middle] < n){
+          left = middle + 1;
+          apelari++;
+          recursivExistaBinar(left,right);
+        } else if(arr[middle] > n){
+          right = middle - 1;
+          apelari++;
+          recursivExistaBinar(left,right);
+        } else if(arr[middle] === n) {
+          apelari++;
+          return apelari;
+        }
+      }
+    }
+    return apelari;
+  }
+
+console.log(recursivBinar([1,2,3,4,5,6,7,8,9],5));
+console.log(recursivBinar([1,2,3,4,5,6,7,8,9],1));
+console.log(recursivBinar([1,2,3,4,5,6,7,8,9],0));
