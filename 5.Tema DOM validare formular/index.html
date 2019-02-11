@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Tema DOM</title>
+  </head>
+  <body>
+    <form onsubmit="preventD(event);">
+      <fieldset class='form'>
+        <legend>Construiti in HTML si CSS un formular care sa contina 3 Input type text, 2 Selecturi 3 Checkboxuri, 3 Radio Buttons si un submit.</legend>
+        <div class="container-input">
+          <label>Input 1<input type="text" name="" placeholder="Type here."></label><br>
+          <label>Input 2<input type="text" name="" placeholder="Type here."></label><br>
+          <label>Input 3<input type="text" name="" placeholder="Type here."></label><br>
+        </div>
+        <div class="container-input">
+          <select class="" name="">
+            <option value="">option A</option>
+            <option value="">option B</option>
+          </select>
+          <select class="" name="">
+            <option value="">option C</option>
+            <option value="">option D</option>
+          </select>
+        </div>
+        <div class="container-input">
+          <label>checkbox1 <input type="checkbox"></label><br>
+          <label>checkbox2 <input type="checkbox"></label><br>
+        </div>
+        <div class="container-input">
+          <label>radio1<input type="radio" name="radio" value=""></label>
+          <label>radio2<input type="radio" name="radio" value=""></label>
+          <label>radio3<input type="radio" name="radio" value=""></label>
+        </div>
+        <div class="container-input">
+          <input type="submit" name="" value="Submit">
+        </div>
+      </fieldset>
+    </form>
+
+
+    <fieldset class='form'>
+      <legend>1. Pastrati doar 2 inputuri si colorati ambele inputuri verzi daca valoarea din casuta 1 si din casuta 2 sunt egale</legend>
+      <div class="container-input">
+        <label>Input 1<input type="text" name="input1" placeholder="Type here." onkeyup="exercitiu1()"></label><br>
+        <label>Input 2<input type="text" name="input2" placeholder="Type here." onkeyup="exercitiu1()"></label><br>
+      </div>
+    </fieldset>
+
+    <fieldset class='form'>
+      <legend>2. Pastrati doar 2 inputuri si colorati inputul care are valoarea mai mare. Daca sunt egale, colorati-le pe ambele</legend>
+      <div class="container-input">
+        <label>Input 1<input type="text" name="input3" placeholder="Type here." onkeyup="exercitiu2()"></label><br>
+        <label>Input 2<input type="text" name="input4" placeholder="Type here." onkeyup="exercitiu2()"></label><br>
+      </div>
+    </fieldset>
+
+    <fieldset class='form'>
+      <legend>3. Pastrati doar 3 inputuri si afisati in al 3-lea input valoarea inputului mai mare dintre primul si al doilea</legend>
+      <div class="container-input">
+        <label>Input 1<input type="text" name="input5" placeholder="Type here." onkeyup="exercitiu3()"></label><br>
+        <label>Input 2<input type="text" name="input6" placeholder="Type here." onkeyup="exercitiu3()"></label><br>
+        <label>Input 3<input type="text" name="input7" placeholder="Type here."></label><br>
+      </div>
+    </fieldset>
+
+    <fieldset class='form'>
+      <legend>4. Pastrati doar 3 inputuri si afisati in al 3-lea input suma primului + celui de-al 2-lea  input </legend>
+      <div class="container-input">
+        <label>Input 1<input type="text" name="input8" placeholder="Type here." onkeyup="exercitiu4()"></label><br>
+        <label>Input 2<input type="text" name="input9" placeholder="Type here." onkeyup="exercitiu4()"></label><br>
+        <label>Input 3<input type="text" name="input10" placeholder="Type here."></label><br>
+      </div>
+    </fieldset>
+
+    <fieldset class='form'>
+      <legend>5. Pastrati doar 1 input si afisati intr-un span/div in coltul dreapta jos, lungimea sirului de caractere tastat.</legend>
+      <div class="container-input">
+        <label>Input 1<input type="text" name="input11" placeholder="Type here." onkeyup="exercitiu5()"></label><br>
+      </div>
+      <div id="text-length" class="container-input">0 characters</div>
+    </fieldset>
+
+    <fieldset class='form'>
+      <legend>6. Plecand de la ex 5, limitati numarul de caractere la 10. In momentul in care am ajuns la 10, inrositi counterul si folosind event.preventDefault() pe evenimentul onkeypress opriti utilizatorul sa mai introduca caractere in plus</legend>
+      <div class="container-input">
+        <label>Input 1<input type="text" name="input12" placeholder="Type here." onkeyup="exercitiu6(event)"></label><br>
+      </div>
+      <div id="text-length1" class="container-input">0 characters</div>
+    </fieldset>
+
+    <fieldset class='form'>
+      <legend>7.Pastrati doar 1 input si folosind event.preventDefault pe evenimentul onkeypress, opriti utilizatorul sa mai introduca orice altceva decat numere.</legend>
+      <div class="container-input">
+        <label>Input 1<input type="text" name="input12" placeholder="Type here." onkeydown="exercitiu7(event)"></label><br>
+      </div>
+    </fieldset>
+    <fieldset class="form">
+      <legend>8. Tabel cu 9 casute in care se schimba imaginea pe hover</legend>
+      <table border="1">
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+
+    </fieldset>
+
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>

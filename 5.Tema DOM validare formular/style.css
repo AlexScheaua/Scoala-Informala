@@ -1,0 +1,53 @@
+.form {
+  width: 35%;
+  margin: 30px auto;
+  background-color: #ccc;
+  border-radius: 10px;
+  border: 1px solid #111;
+  font-family: arial, sans-serif;
+}
+
+.form .container-input {
+  margin: 30px 0;
+}
+
+.container-input {
+  background-color: #00bcd4;
+  padding: 10px 10px;
+  border-radius: 10px;
+}
+
+.form legend {
+  font-size: 24px;
+  background-color: #eee;
+  border-radius: 10px;
+}
+
+.form input {
+  margin: 3px 10px;
+}
+
+.green-background {
+  background-color: #8bc34a;
+}
+
+.red-color {
+  color: red;
+}
+
+#text-length, #text-length1 {
+  min-width: 10px;
+  float: right;
+
+}
+
+table {
+  border: 1;
+  border-collapse: collapse;
+  margin: 30px auto;
+}
+
+table td img {
+  width: 150px;
+  height: 150px;
+}
