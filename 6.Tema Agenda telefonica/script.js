@@ -6,6 +6,18 @@ var list = [
   {
     name: "Mihai",
     phone: "0268337265"
+  },
+  {
+    name: "Daniel",
+    phone: "0268337333"
+  },
+  {
+    name: "Roxana",
+    phone: "0756824115"
+  },
+  {
+    name: "Andrei",
+    phone: "0768223957"
   }
 ]
 
