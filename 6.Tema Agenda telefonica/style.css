@@ -1,0 +1,99 @@
+* {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+#wrapper {
+  min-height: 900px;
+  width: 564px;
+  background-image: url("background.jpg");
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#header {
+  padding: 30px 0;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: rgba(70, 70, 70, 0.3);
+  margin-bottom: 30px
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.name, .phone, .add {
+  margin: 20px 5px  ;
+  font-weight: bold;
+}
+
+.bkg-white {
+  background-color: #f0f0f0;
+}
+
+.clr-white{
+  color: #f0f0f0;
+}
+
+.add button {
+  border: 0;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.add button:hover {
+  background-color: #0093b5;
+  color: #f0f0f0;
+  transition-duration: 0.3s;
+}
+
+.name input, .phone input {
+  height: 30px;
+  border-radius: 5px;
+  border: 0;
+  padding-left: 5px;
+}
+
+#list {
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-np {
+  font-size: 20px;
+}
+
+.fa-edit, .fa-trash-alt {
+  margin: 0 5px;
+  zoom: 1.5;
+  color: #f0f0f0;
+}
+
+.fa-edit:hover {
+  color: #03e020;
+}
+
+.fa-trash-alt:hover{
+  color: #e00316;
+}
