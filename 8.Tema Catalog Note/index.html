@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <title></title>
+  </head>
+  <body>
+    <div id="wrapper" class="d-flex">
+      <div id="catalog" class="d-flex flex-column align-center">
+        <div class="header">
+          <h1 class="title">Lista Elevi</h1>
+          <div id="add-stud-container">
+            <label for="add-student-input">Name: </label><input id="add-student-input" type="text" placeholder="Ex:Ion Creanga">
+            <button id="add-student" type="button" name="button">Add Student</button>
+          </div>
+          <div class="sort-container d-flex justify-center">
+            <i class="fas fa-arrow-circle-up sort" onclick="sort('studUp')"></i>
+            <i class="fas fa-arrow-circle-down sort" onclick="sort('studDown')"></i>
+          </div>
+        </div>
+        <div id="student-container">
+          <ul id="list">
+
+          </ul>
+        </div>
+      </div>
+      <div id="elev" class="d-flex flex-column align-center">
+        <i id="back" class="fas fa-arrow-alt-circle-left"></i>
+        <div class="header">
+          <h1 class="title" id="stud-title"></h1>
+          <div id="add-grades-container">
+            <label for="add-grade-input">Grade: </label><input id="add-grade-input" type="text">
+            <button id="add-grade" type="button" name="button">Add grade</button>
+          </div>
+          <div class="sort-container d-flex justify-center">
+            <i class="fas fa-arrow-circle-up sort" onclick="sort('gradeUp')"></i>
+            <i class="fas fa-arrow-circle-down sort" onclick="sort('gradeDown')"></i>
+          </div>
+      </div>
+      <div id="grades-container">
+        <ul id="grades-list">
+
+        </ul>
+      </div>
+    </div>
+    <script type="text/javascript" src="class.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
