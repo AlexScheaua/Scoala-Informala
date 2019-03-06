@@ -130,6 +130,10 @@ button:hover {
   font-size: 21px;
 }
 
+.item-name {
+  width: 12%;
+}
+
 .item-score {
   font-weight: bold;
 }
