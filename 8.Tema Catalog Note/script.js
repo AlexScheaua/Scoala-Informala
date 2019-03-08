@@ -47,7 +47,11 @@ function addStudent(){
 
 function draw(){
   var domList = document.querySelector("#list");
-  domList.innerHTML = "";
+  domList.innerHTML = `<li class="list-item d-flex justify-between">
+    <p class="item-name">Name</p>
+    <p class="item-score">Average</p>
+    <p class="item-name">Student grades</p>
+  </li>`;
   for(let i = 0; i < list.length; i++){
     domList.innerHTML += `
     <li class="list-item d-flex justify-between">
