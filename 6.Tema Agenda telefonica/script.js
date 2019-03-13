@@ -72,26 +72,34 @@ function addItem(){
   draw();
 }
 
+let listener = false;
 function editButtons(i){
-  var name = document.querySelector("#add-name");
-  var phone = document.querySelector("#add-phone");
-  var saveButton = document.querySelector("#save-contact");
-  var addButton = document.querySelector("#new-contact");
-  saveButton.style.display = "";
-  addButton.style.display = "none";
-  name.value = list[i].name;
-  phone.value = list[i].phone;
+  
+  if(listener){
+	  alert("save first");
+  } else {
+	  var name = document.querySelector("#add-name");
+	  var phone = document.querySelector("#add-phone");
+	  var saveButton = document.querySelector("#save-contact");
+	  var addButton = document.querySelector("#new-contact");
+	  saveButton.style.display = "";
+	  addButton.style.display = "none";
+	  name.value = list[i].name;
+	  phone.value = list[i].phone;
+	  listener = true;
 
-  document.querySelector("#save-contact").addEventListener("click", function saveEdit(){
-    if(name.value !== "" && phone.value !== ""){
-      list[i].name = name.value;
-      list[i].phone = phone.value;
-      name.value = "";
-      phone.value = "";
-      draw();
-    }
-    document.querySelector("#save-contact").removeEventListener("click", saveEdit);
-  })
+	  document.querySelector("#save-contact").addEventListener("click", function saveEdit(){
+		if(name.value !== "" && phone.value !== ""){
+		  list[i].name = name.value;
+		  list[i].phone = phone.value;
+		  name.value = "";
+		  phone.value = "";
+		  draw();
+		}
+		listener = false;
+		
+	  },{once: true})
+  }
 }
 
 
