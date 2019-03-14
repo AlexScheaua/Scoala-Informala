@@ -49,7 +49,15 @@ function draw(){
       <p>Max Temp: ${response.main.temp_max}</p>
     `
   } else {
+    var dayElements = document.querySelectorAll(".day");
+    
+    for(let i = 0; i < response.list.length; i++){
+      let dateTime = response.list[i].dt_txt.split(" ")
+      let date = dateTime[0];
+      let time = dateTime[1];
 
+
+    }
   }
 }
 

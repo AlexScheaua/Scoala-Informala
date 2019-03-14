@@ -1,12 +1,15 @@
 var list = [
   {
-    item: "Lapte"
+    item: "Lapte",
+    marked: "no"
   },
   {
-    item: "apa"
+    item: "apa",
+    marked: "no"
   },
   {
-    item: "paine"
+    item: "paine",
+    marked: "no"
   }
 ]
 
@@ -30,11 +33,19 @@ function draw(){
   var domList = document.querySelector("#list");
   domList.innerHTML = "";
   for(let i = 0; i < list.length; i++){
-    domList.innerHTML += `<li class="list-item d-flex justify-space">
-      <p>${list[i].item}</p>
-      <i class="fas fa-check-square mark" onclick="marked(${i})"></i>
-    </li>`
+    if(list[i].marked === "no"){
+      domList.innerHTML += `<li class="list-item d-flex justify-space">
+        <p>${list[i].item}</p>
+        <i class="fas fa-check-square mark" onclick="marked(${i})"></i>
+      </li>`
+    } else {
+      domList.innerHTML += `<li class="list-item d-flex justify-space">
+        <p class="striketrough">${list[i].item}</p>
+        <i class="fas fa-check-square mark" onclick="marked(${i})"></i>
+      </li>`
+    }
   }
+
 }
 
 function addItem(){
@@ -42,6 +53,7 @@ function addItem(){
   var newItem = {};
   if(input.value !== ""){
     newItem.item = input.value;
+    newItem.marked = "no";
     list.push(newItem);
     input.value = ""
     draw();
@@ -80,8 +92,13 @@ function sort(direction){
 }
 
 function marked(i){
-  var paragraphs = document.querySelectorAll("p");
-  paragraphs[i].classList.toggle("striketrough");
+  if(list[i].marked === "no"){
+    list[i].marked = "yes";
+    draw();
+  } else {
+    list[i].marked = "no";
+    draw();
+  }
 }
 
 initialize();
