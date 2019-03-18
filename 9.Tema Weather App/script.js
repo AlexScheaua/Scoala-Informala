@@ -113,7 +113,7 @@ function draw(){
 
       dayElements[dayIndex].innerHTML += `
         <div class="hour-content d-flex flex-column align-center">
-          <img src="http://openweathermap.org/img/w/${response.list[0].weather[0].icon}.png">
+          <img src="http://openweathermap.org/img/w/${response.list[i].weather[0].icon}.png">
           <p>Time: ${time}</p>
           <p>Current Temp: ${response.list[i].main.temp} &#8451</p>
           <p>Description: ${response.list[i].weather[0].description}</p>
