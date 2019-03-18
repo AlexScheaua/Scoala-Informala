@@ -68,7 +68,7 @@ function draw(){
       </div>
       <div class="col-xs-12 col-md-6">
         <iframe width="100%" height="100%" frameborder="0" style="border:0"
-          src="https://maps.google.com/maps?hl=en&amp;q=${response.name}+()&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
+          src="https://maps.google.com/maps?hl=en&amp;q=${response.name},${response.sys.country}+()&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
         </iframe>
       </div>
     `
