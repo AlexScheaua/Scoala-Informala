@@ -40,7 +40,7 @@ function draw(){
       </li>`
     } else {
       domList.innerHTML += `<li class="list-item d-flex justify-space">
-        <p class="striketrough">${list[i].item}</p>
+        <p class="strikethrough">${list[i].item}</p>
         <i class="fas fa-check-square mark" onclick="marked(${i})"></i>
       </li>`
     }
