@@ -164,6 +164,7 @@ function sort(id){
       drawGrades();
       break;
   }
+  hideGrades();
 }
 
 initialize();
