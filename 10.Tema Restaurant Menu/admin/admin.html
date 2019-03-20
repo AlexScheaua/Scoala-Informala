@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="resources/grid.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../resources/grid.css">
     <title></title>
   </head>
   <body class="d-flex justify-center" onload="initialize()">
@@ -12,9 +12,10 @@
       <div id="header">
         <h2>Restaurant Menu</h2>
         <div>
-          <input id="search-input" type="text" placeholder="Search here...">
+          <input id="search-input" type="text" placeholder="Search here..." >
         </div>
-        <a href="/admin/admin.html" class="button-class">Admin page</a>
+        <a href="../index.html" class="button-class">Restaurant Page</a>
+        <button type="button" name="button" onclick="editDetails()">Add Entry</button>
       </div>
       <div id="content">
 
@@ -34,6 +35,6 @@
 
     </div>
 
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="admin.js"></script>
   </body>
 </html>
