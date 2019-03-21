@@ -89,7 +89,7 @@ function editDetails(idx){
         <label class="col-xs-11" for="">Ingredients: <textarea id="ingredients-input" class="col-xs-12" name="name">${response[idx].ingrediente}</textarea></label>
       </div>
       <div class="col-xs-12 d-flex justify-center">
-        <label class="col-xs-11" for="">Recipe: <textarea id="recipe-input" class="col-xs-12" name="name">${response[idx].reteta}</textarea></label>
+        <label class="col-xs-11" for="">Recipe: <textarea id="recipe-input" class="col-xs-12" name="name">${recipeHTMLToText(response[idx].reteta)}</textarea></label>
       </div>
       <div class="col-xs-12 d-flex justify-around">
         <button class="button-class" onclick="hideDetails()">Back</button>
@@ -155,7 +155,7 @@ function saveEntry(idx,method){
   let image = document.querySelector("#image-input");
   let ingredients = document.querySelector("#ingredients-input");
   let recipe = document.querySelector("#recipe-input");
-  recipe = recipeNewLineCreator(recipe.value)
+  recipe = recipeTextToHTML(recipe.value)
 
   let newObject = {
     nume: title.value,
@@ -176,8 +176,14 @@ function deleteEntry(idx){
   }
 }
 
-function recipeNewLineCreator(recipe){
-  recipe = recipe.split("\\n");
+function recipeTextToHTML(recipe){
+  recipe = recipe.split("\n");
   recipe = recipe.join("<br>");
+  return recipe;
+}
+
+function recipeHTMLToText(recipe){
+  recipe = recipe.split("<br>");
+  recipe = recipe.join("\n");
   return recipe;
 }
