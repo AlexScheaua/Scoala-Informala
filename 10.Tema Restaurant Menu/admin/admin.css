@@ -44,10 +44,8 @@
 }
 
 .admin-input {
-  height: 280px;
   width: 100%;
-  position: absolute;
-  top: 0;
+  height: 100%;
 }
 
 .admin-input i {
