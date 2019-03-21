@@ -5,17 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="resources/grid.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <title></title>
   </head>
-  <body class="d-flex justify-center" onload="initialize()">
-    <div id="wrapper" class="col-xs-11">
-      <div id="header">
-        <h2>Restaurant Menu</h2>
-        <div>
-          <input id="search-input" type="text" placeholder="Search here...">
-        </div>
-        <a href="/admin/admin.html" class="button-class">Admin page</a>
+  <body class="d-flex flex-column align-center" onload="initialize()">
+    <div id="header" class="col-xs-12 row-xs-30 row-md-70">
+      <h2 id="restaurant-name" class="title-xs-20 title-md-50">Restaurant Name</h2>
+      <div class="d-flex justify-end">
+        <input id="search-input" class="align-self-bottom" type="text" placeholder="Search here...">
+        <label for="search-input" class="align-self-bottom"><i class="fas fa-search"></i></label>
       </div>
+      <div class="header-button-container">
+        <a href="/admin/admin.html" class="header-button">Admin page</a>
+      </div>
+    </div>
+
+    <div id="wrapper" class="col-xs-11">
       <div id="content">
 
       </div>

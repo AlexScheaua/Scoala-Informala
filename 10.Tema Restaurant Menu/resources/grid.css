@@ -44,6 +44,16 @@
 	width: 8.33333333%;
 }
 
+.row-xs-30 {
+	height: 30vh
+}
+
+.title-xs-20 {
+	top: 10%;
+	font-size: 58px;
+	letter-spacing: 5px;
+}
+
 /*</editor-fold>*/
 
 /*<editor-fold desc="Small Screen .col-sm- min-width: 768px">*/
@@ -124,6 +134,16 @@
 	}
 	.col-md-1 {
 		width: 8.33333333%;
+	}
+
+	.row-md-70 {
+		height: 70vh;
+	}
+
+	.title-md-50{
+		top: 50%;
+		font-size: 100px;
+		letter-spacing: -2px;
 	}
 }
 /*</editor-fold>*/

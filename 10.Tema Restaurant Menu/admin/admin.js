@@ -32,7 +32,15 @@ function getListAjax(idx, method, body){
   .then(response => response.json())
   .then(json => {
     response = json;
-    drawList(json);
+    if(method === "DELETE"){
+      alert(`Elementul "${deletedItem}" a fost sters`);
+      getListAjax();
+    }
+    else if(method !== "GET"){
+      getListAjax();
+    } else {
+      drawList(json);
+    }
   })
 }
 
@@ -43,15 +51,17 @@ function drawList(response){
     if(response.hasOwnProperty(item) && response[item].existsInSearch !== "no"){
       listContainer.innerHTML += `
       <div class="list-item d-flex justify-between flex-wrap">
-        <div class="col-sm-4 col-xs-12">
+        <div class="col-sm-4 col-xs-12 d-flex justify-center">
           <img src="${response[item].imagine}">
         </div>
         <div class="col-sm-4 col-xs-12 align-self-center">
           <p class="item-name">${response[item].nume}</p>
           <p class="list-ingredients">${response[item].ingrediente}</p>
         </div>
-        <button class="button-class align-self-center" onclick="editDetails('${item}')">Edit</button>
-        <button class="button-class align-self-center" onclick="deleteEntry('${item}')">Delete</button>
+        <div class="col-sm-2 col-xs-12 d-flex justify-around align-self-center">
+          <button class="button-class" onclick="editDetails('${item}')">Edit</button>
+          <button class="button-class" onclick="deleteEntry('${item}')">Delete</button>
+        </div>
       </div>
       `
     }
@@ -68,44 +78,46 @@ function editDetails(idx){
     method = "PUT";
 
     detailsContainer.innerHTML = `
-    <div id="popup-window">
-      <div class="col-sm-9 col-xs-11">
-        <input id="title-input" type="text" value="${response[idx].nume}">
+    <div id="popup-window" class="col-xs-11 col-md-6 ">
+      <div class="col-xs-12 d-flex justify-center">
+        <label class="col-xs-11" for="">Title: <br><input id="title-input" type="text" value="${response[idx].nume}"></label>
       </div>
-      <div class="col-sm-9 col-xs-11">
-        <input id="image-input" type="text" value="${response[idx].imagine}">
+      <div class="col-xs-12 d-flex justify-center">
+        <label class="col-xs-11" for="">Image Link: <br><input id="image-input" type="text" value="${response[idx].imagine}"></label>
       </div>
-      <div class="col-sm-9 col-xs-11">
-        <textarea id="ingredients-input" name="name">${response[idx].ingrediente}</textarea>
+      <div class="col-xs-12 d-flex justify-center">
+        <label class="col-xs-11" for="">Ingredients: <textarea id="ingredients-input" class="col-xs-12" name="name">${response[idx].ingrediente}</textarea></label>
       </div>
-      <div class="col-sm-9 col-xs-11">
-        <textarea id="recipe-input" name="name">${response[idx].reteta}</textarea>
+      <div class="col-xs-12 d-flex justify-center">
+        <label class="col-xs-11" for="">Recipe: <textarea id="recipe-input" class="col-xs-12" name="name">${response[idx].reteta}</textarea></label>
       </div>
-
-      <button class="button-class" onclick="hideDetails()">Back</button>
-      <button class="button-class" onclick="saveEntry('${idx}','${method}')">Save</button>
+      <div class="col-xs-12 d-flex justify-around">
+        <button class="button-class" onclick="hideDetails()">Back</button>
+        <button class="button-class" onclick="saveEntry('${idx}','${method}')">Save</button>
+      </div>
     </div>
     `
   } else {
     method = "POST";
 
     detailsContainer.innerHTML = `
-    <div id="popup-window">
+    <div id="popup-window" class="col-xs-11 col-md-6 ">
+    <div class="col-xs-12 d-flex justify-center">
+      <label class="col-xs-11" for="">Title: <br><input id="title-input" type="text" value=""></label>
+    </div>
+    <div class="col-xs-12 d-flex justify-center">
+      <label class="col-xs-11" for="">Image Link: <br><input id="image-input" type="text" value=""></label>
+    </div>
+    <div class="col-xs-12 d-flex justify-center">
+      <label class="col-xs-11" for="">Ingredients: <textarea id="ingredients-input" class="col-xs-12" name="name"></textarea></label>
+    </div>
+    <div class="col-xs-12 d-flex justify-center">
+      <label class="col-xs-11" for="">Recipe: <textarea id="recipe-input" class="col-xs-12" name="name"></textarea></label>
+    </div>
       <div class="col-sm-9 col-xs-11">
-        <input id="title-input" type="text" value="">
+        <button class="button-class" onclick="hideDetails()">Back</button>
+        <button class="button-class" onclick="saveEntry(${undefined},'${method}')">Save</button>
       </div>
-      <div class="col-sm-9 col-xs-11">
-        <input id="image-input" type="text" value="">
-      </div>
-      <div class="col-sm-9 col-xs-11">
-        <textarea id="ingredients-input" name="name"></textarea>
-      </div>
-      <div class="col-sm-9 col-xs-11">
-        <textarea id="recipe-input" name="name"></textarea>
-      </div>
-
-      <button class="button-class" onclick="hideDetails()">Back</button>
-      <button class="button-class" onclick="saveEntry(${undefined},'${method}')">Save</button>
     </div>
     `
   }
@@ -143,17 +155,27 @@ function saveEntry(idx,method){
   let image = document.querySelector("#image-input");
   let ingredients = document.querySelector("#ingredients-input");
   let recipe = document.querySelector("#recipe-input");
+  recipe = recipeNewLineCreator(recipe.value)
 
-  console.log(title.value);
-  console.log(image.value);
-  console.log(ingredients.value);
-  console.log(recipe.value);
-  console.log(idx);
-  console.log(method);
+  let newObject = {
+    nume: title.value,
+    imagine: image.value,
+    ingrediente: ingredients.value,
+    reteta: recipe
+  }
+
+  getListAjax(idx,method,JSON.stringify(newObject));
 
   hideDetails();
 }
 
-function deleteEntry(){
+function deleteEntry(idx){
+  window.deletedItem = response[idx].nume;
+  getListAjax(idx,"DELETE");
+}
 
+function recipeNewLineCreator(recipe){
+  recipe = recipe.split("\\n");
+  recipe = recipe.join("<br>");
+  return recipe;
 }

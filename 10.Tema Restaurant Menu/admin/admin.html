@@ -5,18 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../resources/grid.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <title></title>
   </head>
-  <body class="d-flex justify-center" onload="initialize()">
-    <div id="wrapper" class="col-xs-11">
-      <div id="header">
-        <h2>Restaurant Menu</h2>
-        <div>
-          <input id="search-input" type="text" placeholder="Search here..." >
-        </div>
-        <a href="../index.html" class="button-class">Restaurant Page</a>
-        <button type="button" name="button" onclick="editDetails()">Add Entry</button>
+  <body class="d-flex flex-column align-center" onload="initialize()">
+    <div id="admin-header" class="col-xs-12 row-xs-30">
+      <h2 id="admin-title" class="title-xs-20">Admin page</h2>
+      <div class="admin-input d-flex justify-end">
+        <input id="search-input" class="align-self-bottom" type="text" placeholder="Search here...">
+        <label for="search-input" class="align-self-bottom"><i class="fas fa-search"></i></label>
       </div>
+      <div class="admin-header-button-container d-flex justify-between">
+        <button type="button" class="add-item" name="button" onclick="editDetails()">Add Menu Item</button>
+        <a href="../index.html" class="header-button">Restaurant Page</a>
+      </div>
+    </div>
+
+    <div id="wrapper" class="col-xs-11">
       <div id="content">
 
       </div>

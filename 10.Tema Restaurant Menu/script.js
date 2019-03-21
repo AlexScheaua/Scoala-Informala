@@ -28,7 +28,7 @@ function drawList(response){
     if(response.hasOwnProperty(item) && response[item].existsInSearch !== "no"){
       listContainer.innerHTML += `
       <div class="list-item d-flex justify-between flex-wrap">
-        <div class="col-sm-4 col-xs-12">
+        <div class="col-sm-4 col-xs-12 d-flex justify-center">
           <img src="${response[item].imagine}" onclick="drawDetails('${item}')">
         </div>
         <div class="col-sm-4 col-xs-12 align-self-center">
@@ -46,14 +46,14 @@ function drawDetails(idx){
   let detailsContainer = document.querySelector("#popup-container");
   detailsContainer.style.display = "flex";
   detailsContainer.innerHTML = `
-  <div id="popup-window">
-    <div class="col-sm-9 col-xs-11">
+  <div id="popup-window" class="col-xs-11 col-md-6 d-flex flex-column align-center">
+    <div class="col-sm-9 col-xs-11 d-flex justify-center">
       <h2>${response[idx].nume}</h2>
     </div>
-    <div class="col-sm-9 col-xs-11">
+    <div class="col-sm-9 col-xs-11 d-flex justify-center">
       <img src="${response[idx].imagine}">
     </div>
-    <div class="col-sm-9 col-xs-11">
+    <div class="col-md-10 col-xs-11 d-flex justify-center overflow">
       <p>${response[idx].reteta}</p>
     </div>
     <button class="button-class" onclick="hideDetails()">Back</button>
@@ -65,6 +65,11 @@ function drawDetails(idx){
 
   detailsContainer.addEventListener("click",function(){
     hideDetails();
+  })
+
+  let detailsPopup = document.querySelector("#popup-window");
+  detailsPopup.addEventListener("click",function(){ //opreste bubblingul pe detailsContainer care inchide pagina
+    event.stopPropagation();
   })
 }
 

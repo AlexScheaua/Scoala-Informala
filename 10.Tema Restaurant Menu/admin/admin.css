@@ -1,0 +1,54 @@
+#admin-header {
+  background: url("../resources/background.jpg") no-repeat;
+  background-position: 0% 20%;
+  background-size: cover;
+}
+
+#admin-title {
+  width: 100%;
+  line-height: 80px;
+  text-shadow: 1px 1px 20px #000000;
+  color: #eee;
+  position: absolute;
+  text-align: center;
+}
+
+.admin-header-button-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 300px;
+  height: 37px;
+}
+
+.add-item {
+  background-color: #eee;
+  border: none;
+  border-radius: 3px;
+  color: rgba(50, 50, 50, 1);
+  font-size: 16px;
+  font-weight: 100;
+  padding: 10px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.add-item:hover {
+  background-color: rgba(50, 50, 50, 1);
+  color: #eee;
+  transition-duration: 0.3s
+}
+
+.admin-input {
+  height: 280px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.admin-input i {
+  margin: 10px 10px 10px 0;
+  zoom: 2;
+  color: rgba(200,200,200,0.6)
+}
