@@ -13,7 +13,7 @@ function searchButtonInit(){
 }
 
 function getListAjax(idx, method, body){
-  if(!idx){
+  if(idx === undefined){
     idx = "";
   }
 
@@ -38,7 +38,7 @@ function getListAjax(idx, method, body){
     }
     else if(method !== "GET"){
       getListAjax();
-    } else {
+    } else if(idx === ""){
       drawList(json);
     }
   })
