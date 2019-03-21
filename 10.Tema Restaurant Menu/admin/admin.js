@@ -52,7 +52,7 @@ function drawList(response){
       listContainer.innerHTML += `
       <div class="list-item d-flex justify-between flex-wrap">
         <div class="col-sm-4 col-xs-12 d-flex justify-center">
-          <img src="${response[item].imagine}">
+          <img src="${response[item].imagine}" onclick="editDetails('${item}')" title="Click to Edit">
         </div>
         <div class="col-sm-4 col-xs-12 align-self-center">
           <p class="item-name">${response[item].nume}</p>

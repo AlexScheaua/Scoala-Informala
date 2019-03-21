@@ -12,6 +12,7 @@
   background: url("resources/background.jpg") no-repeat;
   background-position: 0% 20%;
   background-size: cover;
+  box-shadow: 1px 1px 20px #aaa;
 }
 
 #restaurant-name {
@@ -98,19 +99,21 @@
   padding: 7px 10px;
   background-color: rgba(75, 47, 27, 0.8);
   text-shadow: 1px 1px 20px #000000;
+  box-shadow: 1px 1px 20px #aaa;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
 }
 
 .button-class:hover {
-  background: rgba(34, 22, 14, 0.8);
+  background: rgba(100,100,100, 0.8);
   transition-duration: 0.3s;
 }
 
 
 #content {
   background-color: #eee;
+  box-shadow: 1px 1px 20px #aaa;
   padding: 10px 0;
   border-radius: 10px;
   margin: 10px 0;
@@ -118,12 +121,21 @@
 
 .list-item {
   margin: 10px 0;
-  padding: 0 10px;
+  padding: 0 100px 0 0 ;
 }
 
-img {
+#content img {
+  filter: grayscale(1);
   height: 200px;
   margin: 10px 0;
+  box-shadow: 1px 1px 20px #aaa;
+}
+
+#content img:hover {
+  filter: grayscale(0);
+  height: 220px;
+  transition-duration: 0.3s;
+  cursor: pointer;
 }
 
 
@@ -133,7 +145,8 @@ img {
   background-color: rgb(44, 43, 48);
   border-radius: 10px;
   color: #eee;
-  text-shadow: 1px 1px 20px #000000;
+  text-shadow: 1px 1px 2px #333;
+  box-shadow: 1px 1px 20px #aaa;
 }
 
 .address {
@@ -159,7 +172,16 @@ img {
   color: #eee;
   text-shadow: 1px 1px 20px #000000;
   padding: 10px 0;
+}
 
+#popup-window img {
+  height: 200px;
+  margin: 10px 0;
+  box-shadow: 1px 1px 20px #333;
+}
+
+#popup-window button {
+  box-shadow: 1px 1px 20px #333;
 }
 
 #popup-window div{

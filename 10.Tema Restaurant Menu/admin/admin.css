@@ -2,6 +2,7 @@
   background: url("../resources/background.jpg") no-repeat;
   background-position: 0% 20%;
   background-size: cover;
+  box-shadow: 1px 1px 20px #aaa;
 }
 
 #admin-title {
@@ -24,6 +25,7 @@
 .add-item {
   background-color: #eee;
   text-shadow: 1px 1px 2px #bbb;
+  box-shadow: 1px 1px 20px #aaa;
   border: none;
   border-radius: 3px;
   color: rgba(50, 50, 50, 1);
