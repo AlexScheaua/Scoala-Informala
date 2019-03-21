@@ -23,6 +23,7 @@
 
 .add-item {
   background-color: #eee;
+  text-shadow: 1px 1px 2px #bbb;
   border: none;
   border-radius: 3px;
   color: rgba(50, 50, 50, 1);
