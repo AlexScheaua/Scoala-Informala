@@ -28,14 +28,16 @@ function drawList(response){
     if(response.hasOwnProperty(item) && response[item].existsInSearch !== "no"){
       listContainer.innerHTML += `
       <div class="list-item d-flex justify-between flex-wrap">
-        <div class="col-sm-4 col-xs-12 d-flex justify-center">
+        <div class="col-md-4 col-xs-12 d-flex justify-center">
           <img src="${response[item].imagine}" onclick="drawDetails('${item}')">
         </div>
-        <div class="col-sm-4 col-xs-12 align-self-center">
+        <div class="col-sm-4 col-xs-12 align-self-center item-name-ingredients">
           <p class="item-name">${response[item].nume}</p>
           <p class="list-ingredients">${response[item].ingrediente}</p>
         </div>
-        <button class="button-class align-self-center" onclick="drawDetails('${item}')">Details</button>
+        <div class="col-sm-2 col-xs-12 d-flex justify-around align-self-center">
+          <button class="button-class" onclick="drawDetails('${item}')">Details</button>
+        </div>
       </div>
       `
     }
