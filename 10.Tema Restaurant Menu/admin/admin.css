@@ -52,3 +52,34 @@
   zoom: 2;
   color: rgba(200,200,200,0.6)
 }
+
+
+@media (max-width: 768px) {
+  #admin-title {
+    font-size: 52px;
+  }
+}
+
+@media (min-height: 990px) {
+  #popup-window textarea{
+    height: 260px;
+  }
+}
+
+@media (max-height: 990px) {
+  #popup-window textarea{
+    height: 220px;
+  }
+}
+
+@media (max-height: 820px) {
+  #popup-window textarea{
+    height: 140px;
+  }
+}
+
+@media (max-height: 666px) {
+  #popup-window textarea{
+    height: 100px;
+  }
+}
