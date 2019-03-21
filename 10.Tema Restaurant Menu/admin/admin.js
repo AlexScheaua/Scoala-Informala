@@ -170,8 +170,10 @@ function saveEntry(idx,method){
 }
 
 function deleteEntry(idx){
-  window.deletedItem = response[idx].nume;
-  getListAjax(idx,"DELETE");
+  if(confirm("Are you sure you want to delete this entry?")){
+    window.deletedItem = response[idx].nume;
+    getListAjax(idx,"DELETE");
+  }
 }
 
 function recipeNewLineCreator(recipe){
