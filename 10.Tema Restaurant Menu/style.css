@@ -76,14 +76,16 @@
 }
 
 #header i {
-  color: rgba(50, 50, 50, 0.4);
+  color: rgba(50, 50, 50, 1);
+  text-shadow: 1px 1px 20px #fff;
   margin: 10px 10px 10px 0;
   zoom: 2;
 }
 
 #header i:hover, #admin-header i:hover {
-  color: rgba(50, 50, 50, 0.8);
+  color: rgba(200, 200, 200, 0.6);
   transition-duration: 0.3s;
+  cursor: pointer;
 }
 
 .button-class {

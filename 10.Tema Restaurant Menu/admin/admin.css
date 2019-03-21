@@ -50,7 +50,8 @@
 .admin-input i {
   margin: 10px 10px 10px 0;
   zoom: 2;
-  color: rgba(200,200,200,0.6)
+  color: rgba(50,50,50,1);
+  text-shadow: 1px 1px 20px #fff;
 }
 
 
