@@ -1,4 +1,4 @@
-let response = [];
+  let response = [];
 
 function initialize(){
   searchButtonInit();

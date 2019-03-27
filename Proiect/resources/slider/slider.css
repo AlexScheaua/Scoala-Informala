@@ -1,0 +1,29 @@
+.carousel {
+  background: #333;
+}
+
+.flickity-viewport {
+  display: block;
+  height: 30vw;
+}
+
+.carousel-cell {
+  margin-right: 20px;
+  overflow: hidden;
+  height: 30vw;
+  width: 100%;
+}
+
+.carousel-cell img {
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .flickity-viewport {
+    height: 50vw;
+  }
+
+  .carousel-cell {
+    height: 50vw;
+  }
+}
