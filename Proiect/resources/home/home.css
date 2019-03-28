@@ -19,10 +19,10 @@
 .home-item {
   flex: 0 0 auto;
   width: 165px;
-  height: 300px;
+  height: 340px;
   background-color: white;
   margin: 10px 2px;
-  padding: 5px 0 10px 0;
+  padding-bottom: 5px;
   border-radius: 5px;
 }
 
@@ -35,7 +35,7 @@
 
 .home-item-name {
   width: 100%;
-  height: 120px;
+  max-height: 120px;
 }
 
 .home-item-name-text {
@@ -53,4 +53,8 @@
   color: var(--lightBlue);
   text-shadow: 0 0 1px var(--textWhite);
   transition-duration: 0.3s;
+}
+
+.home-item-price {
+  max-height: 34px;
 }

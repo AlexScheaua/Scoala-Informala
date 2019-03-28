@@ -1,3 +1,37 @@
-input {
-  display: block;
+#adminPage {
+  background-color: #ccc;
+  box-shadow: 0 0 10px #888;
+  min-height: 500px;
+}
+
+.admin-buttons {
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  background-color: #eee;
+  color: var(--navBackgroundGrey);
+  text-align: center;
+  padding: 8px 10px;
+  border-radius: 3px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 0 3px #aaa;
+}
+
+.admin-buttons:hover {
+  background-color: var(--navBackgroundGrey);
+  box-shadow: 0 1px 3px #888;
+  transition-duration: 0.3s;
+}
+
+.admin-buttons.add:hover {
+  color: var(--priceBlue);
+}
+
+.admin-buttons.edit:hover {
+  color: #16ca00;
+}
+
+.admin-buttons.delete:hover {
+  color: var(--discountRed);
 }

@@ -1,11 +1,12 @@
-<iframe onload="ajax('GET')" style="display:none;"></iframe>
+<iframe onload="ajax('GET','','Products', drawAdmin)" style="display:none;"></iframe>
 
-<div id="admin" class="d-flex flex-column">
-  name<input type="text" id="input-name">
-  description<textarea id="input-description" rows="8" cols="80"></textarea>
-  img princ<input type="text" id="input-img-princ">
-  imgs<input type="text" id="input-imgs">
-  price<input type="text" id="input-price">
-  stock<input type="text" id="input-stock">
-  <button type="button" id="saveData" onclick="addItem()" name="button">Save</button>
+
+<div id="adminPage" class="col-xs-12 col-sm-10 col-md-9">
+  <div class="d-flex justify-between">
+    <h2>ADMINISTRATOR PAGE</h2>
+    <button class="admin-buttons add" onclick="addEditProduct()">Add Product</button>
+  </div>
+  <div id="admin-content" class="d-flex flex-wrap">
+
+  </div>
 </div>

@@ -61,9 +61,6 @@ function drawDetails(idx){
     <button class="button-class" onclick="hideDetails()">Back</button>
   </div>
   `
-  detailsContainer.addEventListener("click", function(event){
-    hideDetails();
-  })
 
   detailsContainer.addEventListener("click",function(){
     hideDetails();
