@@ -16,7 +16,7 @@ function drawHome(){
             </div>
             <div class="home-item-price d-flex flex-column align-center">
               <p class="products-item-price-text-old">Price: ${itemList[product].price}</p>
-              <p class="products-item-price-text-new">${itemList[product].price - itemList[product].price*(discount/100)} RON</p>
+              <p class="products-item-price-text-new">${itemList[product].discountedPrice} RON</p>
             </div>
             <div class="d-flex justify-center">
               <button class="details-buttons" onclick="drawDetails('${product}')">Details</button>

@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="resources/products/products.css">
     <link rel="stylesheet" href="resources/details/details.css">
     <link rel="stylesheet" href="resources/admin/admin.css">
+    <link rel="stylesheet" href="resources/cart/cart.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> <!-- Font awesome -->
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css"> <!-- Slider CSS -->
     <link rel="stylesheet" href="resources/slider/slider.css">  <!-- Slider CSS -->
 
     <title>eShop</title>
   </head>
-  <body onload="loadComponent('resources/home/home.html');">
+  <body onload="loadComponent('resources/home/home.html');iframeLoad();">
     <header>
       <div class="main-carousel">
         <div class="main-carousel-cell">
@@ -103,9 +104,7 @@
           <h3>Palo Alto, CA 94303</h3>
           <h4>USA</h4>
         </div>
-        <div class="map d-flex justify-center col-sm-6 col-xs-12">
-          <iframe class="col-xs-12" height="100%" frameborder="0" style="border:0" src="https://maps.google.com/maps?hl=en&amp;q=1700-1748 Channing Ave,Palo Alto, CA 94303,USA+()&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" <="" iframe=""></iframe>
-        </div>
+        <div class="map d-flex justify-center col-sm-6 col-xs-12"></div>
       </div>
       <div id="copyright" class="d-flex justify-center align-center">
         <span>© 2019 <a href="mailto:alex.scheaua22@gmail.com"> Alex Scheaua</a></span>
@@ -116,8 +115,9 @@
     <script type="text/javascript" src="index.js"></script>
     <script type="text/javascript" src="resources/home/home.js"></script>
     <script type="text/javascript" src="resources/products/products.js"></script>
-    <script type="text/javascript" src="resources/admin/admin.js"></script>
     <script type="text/javascript" src="resources/details/details.js"></script>
+    <script type="text/javascript" src="resources/admin/admin.js"></script>
+    <script type="text/javascript" src="resources/cart/cart.js"></script>
 
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>     <!-- Slider Script -->
     <script type="text/javascript" src="resources/slider/slider.js">  <!-- Slider Script -->

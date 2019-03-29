@@ -11,6 +11,12 @@ async function fetchHtmlAsText(url) {
     return await response.text();
 }
 
+//functie care initializeaza harta dupa ce pagina este incarcata
+function iframeLoad(){
+  let mapIframe = document.querySelector(".map");
+  mapIframe.innerHTML = `<iframe class="map-iframe col-xs-12" height="100%" frameborder="0" style="border:0" src="https://maps.google.com/maps?hl=en&amp;q=1700-1748 Channing Ave,Palo Alto, CA 94303,USA+()&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" <="" iframe=""></iframe>`
+}
+
 //functii pentru navbar menu
 function dropDownMenu(){
   let navbarItems = document.querySelectorAll(".navbar-item");
@@ -71,7 +77,7 @@ function setLoadingGif(bool){
 
 //ajax request
 let itemList = {}
-function ajax(method,body,idx,drawFunction){
+async function ajax(method,body,idx,drawFunction){
   if(!method){
     method = "GET";
   }
@@ -84,7 +90,7 @@ function ajax(method,body,idx,drawFunction){
     idx = "";
   }
 
-fetch(`https://scoala-informala-ba5c7.firebaseio.com/${idx}.json`,{
+await fetch(`https://scoala-informala-ba5c7.firebaseio.com/${idx}.json`,{
     method: method,
     body: body
   })

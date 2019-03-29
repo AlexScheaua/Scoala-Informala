@@ -193,7 +193,8 @@
 
 #footer a:hover {
   color: var(--lightBlue);
-  text-shadow: 0 0 15px #888;
+  text-shadow: 0 0 5px #888;
+  transition-duration: 0.3s;
 }
 
 #footer i {

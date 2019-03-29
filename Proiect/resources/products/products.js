@@ -22,7 +22,7 @@ function drawProducts(){
       if(discount > 0){
         productsPrice[productsPrice.length-1].innerHTML = `
           <p class="products-item-price-text-old">Price: ${itemList[product].price}</p>
-          <p class="products-item-price-text-new">${itemList[product].price - itemList[product].price*(discount/100)} RON</p>
+          <p class="products-item-price-text-new">${itemList[product].discountedPrice} RON</p>
         `
       } else {
         productsPrice[productsPrice.length-1].innerHTML = `

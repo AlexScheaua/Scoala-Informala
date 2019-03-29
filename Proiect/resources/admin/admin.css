@@ -4,7 +4,7 @@
   min-height: 500px;
 }
 
-.admin-buttons {
+.admin-buttons, .add-edit-form button {
   font-size: 14px;
   font-weight: bold;
   border: none;
@@ -18,13 +18,13 @@
   box-shadow: 0 0 3px #aaa;
 }
 
-.admin-buttons:hover {
+.admin-buttons:hover, .add-edit-form button:hover {
   background-color: var(--navBackgroundGrey);
   box-shadow: 0 1px 3px #888;
   transition-duration: 0.3s;
 }
 
-.admin-buttons.add:hover {
+.admin-buttons.add:hover, .add-edit-form button:hover {
   color: var(--priceBlue);
 }
 
@@ -34,4 +34,25 @@
 
 .admin-buttons.delete:hover {
   color: var(--discountRed);
+}
+
+.add-edit-form {
+  padding: 10px;
+}
+
+.add-edit-form span {
+  color: var(--priceBlue);
+  font-weight: bold;
+}
+
+.add-edit-form input,.add-edit-form textarea{
+  border: none;
+  background-color: #eee;
+  width: 90%;
+  font-size: 20px;
+  margin: 3px;
+}
+
+.add-edit-form button{
+  margin: 15px;
 }

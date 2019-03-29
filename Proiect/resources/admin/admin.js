@@ -23,7 +23,7 @@ function drawAdmin(){
       if(discount > 0){
         productsPrice[productsPrice.length-1].innerHTML = `
           <p class="products-item-price-text-old">Price: ${itemList[product].price}</p>
-          <p class="products-item-price-text-new">${itemList[product].price - itemList[product].price*(discount/100)} RON</p>
+          <p class="products-item-price-text-new">${itemList[product].discountedPrice} RON</p>
         `
       } else {
         productsPrice[productsPrice.length-1].innerHTML = `
@@ -41,14 +41,14 @@ function drawEditAdd(idx){
   let detailsContent = document.querySelector("#product-details-content");
   if(!idx){
     detailsContent.innerHTML = `
-    <div class="d-flex flex-column align-center">
-      name<input type="text" id="input-name">
-      description<textarea id="input-description" rows="8" cols="80"></textarea>
-      img princ<input type="text" id="input-img-princ">
-      imgs<textarea id="input-imgs" rows="8" cols="80"></textarea>
-      price<input type="text" id="input-price">
-      discount<input type="text" id="input-discount"/>
-      stock<input type="text" id="input-stock">
+    <div class="add-edit-form d-flex flex-column align-center">
+      <span>Name:</span><input type="text" id="input-name">
+      <span>Description:</span><textarea id="input-description" rows="8" cols="80"></textarea>
+      <span>Icon image:</span><input type="text" id="input-img-princ">
+      <span>Slider images(separated by \",\" and new line / enter):</span><textarea id="input-imgs" rows="8" cols="80"></textarea>
+      <span>Price:</span><input type="text" id="input-price">
+      <span>Discount (%):</span><input type="text" id="input-discount"/>
+      <span>Stock:</span><input type="text" id="input-stock">
       <button type="button" id="saveData" onclick="saveProductFirebase();" name="button">Save</button>
     </div>
     `
@@ -58,14 +58,14 @@ function drawEditAdd(idx){
       itemList[idx].discount = 0;
     }
     detailsContent.innerHTML = `
-    <div class="d-flex flex-column align-center">
-      name<input type="text" id="input-name" value="${itemList[idx].name}">
-      description<textarea id="input-description" rows="8" cols="80">${itemList[idx].description}</textarea>
-      img princ<input type="text" id="input-img-princ" value="${itemList[idx].icon}">
-      imgs<textarea id="input-imgs" rows="8" cols="80">${itemImages}</textarea>
-      price<input type="text" id="input-price" value="${itemList[idx].price}">
-      discount<input type="text" id="input-discount" value="${itemList[idx].discount}"/>
-      stock<input type="text" id="input-stock" value="${itemList[idx].stock}">
+    <div class="add-edit-form d-flex flex-column align-center">
+      <span>Name:</span><input type="text" id="input-name" value='${itemList[idx].name}'>
+      <span>Description:</span><textarea id="input-description" rows="8" cols="80">${itemList[idx].description}</textarea>
+      <span>Icon image:</span><input type="text" id="input-img-princ" value="${itemList[idx].icon}">
+      <span>Slider images(separated by \",\" and new line / enter):</span><textarea id="input-imgs" rows="8" cols="80">${itemImages}</textarea>
+      <span>Price:</span><input type="text" id="input-price" value="${itemList[idx].price}">
+      <span>Discount (%):</span><input type="text" id="input-discount" value="${itemList[idx].discount}"/>
+      <span>Stock:</span><input type="text" id="input-stock" value="${itemList[idx].stock}">
       <button type="button" id="saveData" onclick="saveProductFirebase('${idx}');" name="button">Save</button>
     </div>
     `
@@ -81,11 +81,20 @@ function addEditProduct(idx){
   }
 }
 
-function deleteProduct(idx){
-  console.log(`deleteProduct(${idx})`);
+async function deleteProduct(idx){
+  if(confirm("Are you sure you want to delete?")){
+    let deletedItem = itemList[idx].name;
+    await ajax("DELETE","",`Products/${idx}`);
+    alert(`${deletedItem} was deleted from the database!`)
+    ajax('GET','','Products', drawAdmin);
+  }
 }
 
-function saveProductFirebase(idx){
+async function saveProductFirebase(idx){
+  let saveButton = document.querySelector(".add-edit-form>button");
+  saveButton.onclick = "";
+  saveButton.innerText = "Saving...";
+
   let name = document.querySelector("#input-name");
   let description = document.querySelector("#input-description");
   let imgPrinc = document.querySelector("#input-img-princ");
@@ -105,17 +114,38 @@ function saveProductFirebase(idx){
     discountedPrice: parseInt(discountedPrice),
     stock: parseInt(stock.value)
   }
+  //verific daca am modificat ceva pe edit pentru a nu face request pe server daca nu e nevoie
+  if(idx){
+    if(newObj.name === itemList[idx].name && newObj.description === itemList[idx].description && newObj.imgPrinc === itemList[idx].imgPrinc &&  newObj.price == itemList[idx].price && newObj.discount === itemList[idx].discount && newObj.stock == itemList[idx].stock) {
+      let bool = true;
+      for(let i = 0; i < newObj.imgs.length; i++){
+        if(newObj.imgs[i] !== itemList[idx].imgs[i]){
+          bool = true;
+          break;
+        } else {
+          bool = false
+        }
+      }
+      if(!bool) {
+        hideDetails();
+        return console.log("no ajax!");
+      }
+      hideDetails();
+    }
+  }
 
-if(!idx){
-  ajax("POST",JSON.stringify(newObj),"Products");
-} else {
-  ajax("PUT",JSON.stringify(newObj),`Products/${idx}`);
-}
-  document.querySelector("#input-name").value = "";
-  document.querySelector("#input-description").value = "";
-  document.querySelector("#input-img-princ").value = "";
-  document.querySelector("#input-imgs").value = "";
-  document.querySelector("#input-price").value = "";
-  document.querySelector("#input-discount").value ="";
-  document.querySelector("#input-stock").value = "";
+  if(newObj.name !== "" && newObj.description !== "" && newObj.imgPrinc !== "" &&  newObj.price != "" && newObj.discount !== "" && newObj.stock != ""){
+    if(!idx){
+      await ajax("POST",JSON.stringify(newObj),"Products");
+      alert("Product Added!");
+    } else {
+      await ajax("PUT",JSON.stringify(newObj),`Products/${idx}`);
+      alert("Product Saved!");
+    }
+
+    ajax('GET','','Products', drawAdmin);
+    hideDetails();
+  } else {
+    alert("All the inputs are needed")
+  }
 }
