@@ -32,6 +32,16 @@ function dropDownMenu(){
   }
 }
 
+function cartIndicatorOnMenuOpen(){
+  var cartIndicator = document.querySelector("#cart-indicator");
+  let searchContainer = document.querySelector("#search-container")
+  if(searchContainer.style.top === "204px"){
+    cartIndicator.style.top = "87px";
+  } else {
+    cartIndicator.style.top = "12px";
+  }
+}
+
 function hideMenu(){
   let navbarItems = document.querySelectorAll(".navbar-item");
   let searchContainer = document.querySelector("#search-container");
@@ -76,7 +86,8 @@ function setLoadingGif(bool){
 }
 
 //ajax request
-let itemList = {}
+let itemList = {};
+let cartList = {};
 async function ajax(method,body,idx,drawFunction){
   if(!method){
     method = "GET";
@@ -96,8 +107,11 @@ await fetch(`https://scoala-informala-ba5c7.firebaseio.com/${idx}.json`,{
   })
   .then(response => response.json())
   .then(response => {
-    if(method === "GET"){
-      itemList = response
+    if(method === "GET" && idx !== "Cart"){
+      itemList = response;
+    } else if (method === "GET"){
+      cartList = response;
+      getCartItemsForIndicator();
     }
   })
   .then(() => {

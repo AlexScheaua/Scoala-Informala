@@ -73,15 +73,28 @@
   color: var(--hoverBlack);
 }
 
+.details-item-price-stock {
+    margin: 40px 0;
+    box-shadow: 0 0 5px #aaa;
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 10px 0;
+}
+
+.details-item-price-stock>p {
+  text-align: center;
+}
+
+.details-item-stock {
+  color: #090;
+  font-size: 20px;
+}
+
 .details-description-title {
   font-size: 22px;
   margin: 8px 0;
   color: var(--hoverBlack);
   text-decoration: underline;
-}
-
-.margin-20 {
-  margin: 40px 0;
 }
 
 .details-item-price {

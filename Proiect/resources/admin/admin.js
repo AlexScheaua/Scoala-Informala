@@ -22,12 +22,12 @@ function drawAdmin(){
       let productsPrice = document.querySelectorAll(".products-item-price");
       if(discount > 0){
         productsPrice[productsPrice.length-1].innerHTML = `
-          <p class="products-item-price-text-old">Price: ${itemList[product].price}</p>
-          <p class="products-item-price-text-new">${itemList[product].discountedPrice} RON</p>
+          <p class="products-item-price-text-old">Price: ${itemList[product].price.toLocaleString('de-DE')}</p>
+          <p class="products-item-price-text-new">${itemList[product].discountedPrice.toLocaleString('de-DE')} RON</p>
         `
       } else {
         productsPrice[productsPrice.length-1].innerHTML = `
-          <p class="products-item-price-text">${itemList[product].price} RON</p>
+          <p class="products-item-price-text">${itemList[product].price.toLocaleString('de-DE')} RON</p>
           `
       }
     }
@@ -47,7 +47,7 @@ function drawEditAdd(idx){
       <span>Icon image:</span><input type="text" id="input-img-princ">
       <span>Slider images(separated by \",\" and new line / enter):</span><textarea id="input-imgs" rows="8" cols="80"></textarea>
       <span>Price:</span><input type="text" id="input-price">
-      <span>Discount (%):</span><input type="text" id="input-discount"/>
+      <span>Discount (0 - 100)(%):</span><input type="text" id="input-discount"/>
       <span>Stock:</span><input type="text" id="input-stock">
       <button type="button" id="saveData" onclick="saveProductFirebase();" name="button">Save</button>
     </div>
@@ -64,7 +64,7 @@ function drawEditAdd(idx){
       <span>Icon image:</span><input type="text" id="input-img-princ" value="${itemList[idx].icon}">
       <span>Slider images(separated by \",\" and new line / enter):</span><textarea id="input-imgs" rows="8" cols="80">${itemImages}</textarea>
       <span>Price:</span><input type="text" id="input-price" value="${itemList[idx].price}">
-      <span>Discount (%):</span><input type="text" id="input-discount" value="${itemList[idx].discount}"/>
+      <span>Discount (0 - 100)(%):</span><input type="text" id="input-discount" value="${itemList[idx].discount}"/>
       <span>Stock:</span><input type="text" id="input-stock" value="${itemList[idx].stock}">
       <button type="button" id="saveData" onclick="saveProductFirebase('${idx}');" name="button">Save</button>
     </div>
@@ -116,7 +116,7 @@ async function saveProductFirebase(idx){
   }
   //verific daca am modificat ceva pe edit pentru a nu face request pe server daca nu e nevoie
   if(idx){
-    if(newObj.name === itemList[idx].name && newObj.description === itemList[idx].description && newObj.imgPrinc === itemList[idx].imgPrinc &&  newObj.price == itemList[idx].price && newObj.discount === itemList[idx].discount && newObj.stock == itemList[idx].stock) {
+    if(newObj.name === itemList[idx].name && newObj.description === itemList[idx].description && newObj.icon === itemList[idx].icon &&  newObj.price == itemList[idx].price && newObj.discount === itemList[idx].discount && newObj.stock == itemList[idx].stock) {
       let bool = true;
       for(let i = 0; i < newObj.imgs.length; i++){
         if(newObj.imgs[i] !== itemList[idx].imgs[i]){
@@ -134,7 +134,7 @@ async function saveProductFirebase(idx){
     }
   }
 
-  if(newObj.name !== "" && newObj.description !== "" && newObj.imgPrinc !== "" &&  newObj.price != "" && newObj.discount !== "" && newObj.stock != ""){
+  if(newObj.name !== "" && newObj.description !== "" && newObj.icon !== "" &&  !(isNaN(newObj.price)) && !(isNaN(newObj.discount)) && newObj.discount < 100 && newObj.discount >= 0 && !(isNaN(newObj.stock))){
     if(!idx){
       await ajax("POST",JSON.stringify(newObj),"Products");
       alert("Product Added!");
@@ -146,6 +146,8 @@ async function saveProductFirebase(idx){
     ajax('GET','','Products', drawAdmin);
     hideDetails();
   } else {
-    alert("All the inputs are needed")
+    alert("All the inputs are needed, please check that the price, discount and stock to be numbers")
+    saveButton.setAttribute("onclick", `saveProductFirebase('${idx}')`);
+    saveButton.innerText = "Save";
   }
 }
