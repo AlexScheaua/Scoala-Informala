@@ -311,3 +311,9 @@
     display: list-item;
   }
 }
+
+@media only screen and (min-width: 768px) {
+  .navbar-item:not(.menu-button) {
+    display: list-item !important;
+  }
+}
