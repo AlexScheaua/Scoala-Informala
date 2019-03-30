@@ -46,7 +46,7 @@ async function modifyStock(idx,sign){
     } else {
       alertMessage("Product is not in stock!")
     }
-  } else {
+  } else if(sign === "-") {
     if(cartList[idx].stock > 1){
       cartList[idx].stock--;
       itemList[idx].stock++;
@@ -56,8 +56,7 @@ async function modifyStock(idx,sign){
       itemList[idx].inCart = false;
       await ajax("PUT",JSON.stringify(itemList[idx]),`Products/${idx}`);
       await ajax("DELETE","",`Cart/${idx}`);
-      await ajax('GET','','Cart',drawCart);
-
+      ajax('GET','','Cart',drawCart);
 
       return;
     }
@@ -66,7 +65,7 @@ async function modifyStock(idx,sign){
   await ajax("PUT",JSON.stringify(cartList[idx]),`Cart/${idx}`);
   await ajax("PUT",JSON.stringify(itemList[idx]),`Products/${idx}`);
 
-  await ajax('GET','','Cart',drawCart)
+  ajax('GET','','Cart',drawCart)
 }
 
 function getCartItemsForIndicator(){
