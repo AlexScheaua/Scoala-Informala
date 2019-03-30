@@ -84,8 +84,8 @@ function addEditProduct(idx){
 async function deleteProduct(idx){
   if(confirm("Are you sure you want to delete?")){
     let deletedItem = itemList[idx].name;
+    alertMessage(`${deletedItem} was deleted from the database!`)
     await ajax("DELETE","",`Products/${idx}`);
-    alert(`${deletedItem} was deleted from the database!`)
     ajax('GET','','Products', drawAdmin);
   }
 }
@@ -137,16 +137,16 @@ async function saveProductFirebase(idx){
   if(newObj.name !== "" && newObj.description !== "" && newObj.icon !== "" &&  !(isNaN(newObj.price)) && !(isNaN(newObj.discount)) && newObj.discount < 100 && newObj.discount >= 0 && !(isNaN(newObj.stock))){
     if(!idx){
       await ajax("POST",JSON.stringify(newObj),"Products");
-      alert("Product Added!");
+      alertMessage("Product Added!");
     } else {
       await ajax("PUT",JSON.stringify(newObj),`Products/${idx}`);
-      alert("Product Saved!");
+      alertMessage("Product Saved!");
     }
 
     ajax('GET','','Products', drawAdmin);
     hideDetails();
   } else {
-    alert("All the inputs are needed, please check that the price, discount and stock to be numbers")
+    alertMessage("All the inputs are needed, please check that the price, discount and stock to be numbers")
     saveButton.setAttribute("onclick", `saveProductFirebase('${idx}')`);
     saveButton.innerText = "Save";
   }

@@ -36,22 +36,13 @@ function drawDetails(idx){
       <p class="details-description-text">${descriptionTextToHTML(itemList[idx].description)}</p>
     </div>
   `
+  existsInCart(idx, "details");
 
-  existInCart(idx)
 
   carouselForDetails();
 }
 
-function existInCart(idx, button){
-  for(let product in cartList){
-    if(product === idx){
-      addToCartToAlreadyInCart(button);
-    }
-  }
-}
-
 function addToCartToAlreadyInCart(button){
-  if(button){
     if(button.innerText === "Add to Cart"){
       let addToCartButton = document.querySelector(".add-to-cart-button");
       addToCartButton.innerText = "Already in cart";
@@ -64,19 +55,13 @@ function addToCartToAlreadyInCart(button){
      button.setAttribute("onClick", "");
      button.style.backgroundColor ="#ffae32";
    }
- } else {
-   let addToCartButton = document.querySelector(".add-to-cart-button");
-   addToCartButton.innerText = "Already in cart";
-   addToCartButton.setAttribute("onClick", "");
-   addToCartButton.style.backgroundColor ="#ffae32";
- }
 }
 
 function autoRedrawComponent(){
   if(document.querySelector("#homePage")){
-    loadComponent('resources/home/home.html');
+    drawHome();
   } else if (document.querySelector("#productsPage")){
-    loadComponent('resources/products/products.html')
+    drawProducts();
   }
 }
 

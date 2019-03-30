@@ -12,13 +12,13 @@ async function fetchHtmlAsText(url) {
 }
 
 //functie care initializeaza harta dupa ce pagina este incarcata
-function iframeLoad(){
+function mapIframeLoad(){
   let mapIframe = document.querySelector(".map");
   mapIframe.innerHTML = `<iframe class="map-iframe col-xs-12" height="100%" frameborder="0" style="border:0" src="https://maps.google.com/maps?hl=en&amp;q=1700-1748 Channing Ave,Palo Alto, CA 94303,USA+()&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" <="" iframe=""></iframe>`
 }
 
 //functii pentru navbar menu
-function dropDownMenu(){
+function dropDownMenuSticky(){
   let navbarItems = document.querySelectorAll(".navbar-item");
   let searchContainer = document.querySelector("#search-container");
   for(let i = 1; i < navbarItems.length; i++){
@@ -30,6 +30,23 @@ function dropDownMenu(){
       searchContainer.style.top = "204px";
     }
   }
+}
+
+function alertMessage(message){
+  let alertBox = document.querySelector("#alert-box-container");
+  alertBox.innerHTML = `
+    <div class="alert-box-background d-flex justify-center align-center">
+      <div class="alert-box d-flex flex-column justify-center align-center">
+        <p class="alert-text">${message}</p>
+        <button class="details-buttons" onclick="removeAlertBox()">OK</button>
+      </div>
+    </div>
+  `
+}
+
+function removeAlertBox(){
+  let alertBox = document.querySelector("#alert-box-container");
+  alertBox.innerHTML = "";
 }
 
 function cartIndicatorOnMenuOpen(){

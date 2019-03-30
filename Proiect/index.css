@@ -220,9 +220,29 @@
   padding-top: 30px;
 }
 
+/* ALERTBOX CSS */
 
+.alert-box-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(50,50,50, 0.8);
+}
 
+.alert-box {
+  height: 200px;
+  width: 400px;
+  overflow: auto;
+  background-color: #fff;
+  cursor: default;
+  box-shadow: 0 0 5px #111;
+}
 
+.alert-text {
+  margin: 20px 10px;
+}
 
 .d-flex {
   display: flex;

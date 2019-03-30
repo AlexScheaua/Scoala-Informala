@@ -44,21 +44,22 @@ async function modifyStock(idx,sign){
       cartList[idx].stock++;
       itemList[idx].stock--;
     } else {
-      alert("Product is not in stock!")
+      alertMessage("Product is not in stock!")
     }
   } else {
     if(cartList[idx].stock > 1){
       cartList[idx].stock--;
       itemList[idx].stock++;
     } else {
-
+      alertMessage("Product removed from cart!")
       itemList[idx].stock++;
+      itemList[idx].inCart = false;
       await ajax("PUT",JSON.stringify(itemList[idx]),`Products/${idx}`);
       await ajax("DELETE","",`Cart/${idx}`);
       await ajax('GET','','Cart',drawCart);
 
 
-      return alert("Product removed from cart!");
+      return;
     }
   }
 
@@ -79,8 +80,22 @@ function getCartItemsForIndicator(){
   }
 }
 
-function log(){
-  console.log(event.target);
+function existsInCart(idx, page){
+  if(page){
+    if(itemList[idx].inCart){
+      let addToCartButton = document.querySelector(".add-to-cart-button");
+      addToCartButton.innerText = "Already in cart";
+      addToCartButton.setAttribute("onClick", "");
+      addToCartButton.style.backgroundColor ="#ffae32";
+      let stockDisplay = document.querySelector(".details-item-stock>span");
+    }
+  } else {
+    var cartButtons = document.querySelectorAll(".product-to-cart-button");
+    if(itemList[idx].inCart){
+      cartButtons[cartButtons.length - 1].setAttribute("onClick", "");
+      cartButtons[cartButtons.length - 1].style.backgroundColor ="#ffae32";
+    }
+  }
 }
 
 async function addToCart(idx) {
@@ -89,21 +104,20 @@ async function addToCart(idx) {
 
   if(itemList[idx].stock > 0){
     itemList[idx].stock--;
+    itemList[idx].inCart = true;
     ajax("PUT",JSON.stringify(itemList[idx]),`Products/${idx}`);
-
+    alertMessage("Product added to cart");
     let cartObject = JSON.parse(JSON.stringify(itemList[idx]));
     cartObject.stock = 1;
     await ajax("PUT",JSON.stringify(cartObject),`Cart/${idx}`);
 
     addToCartToAlreadyInCart(button);
-    alert("Product added to cart");
 
     await ajax("GET",'','Cart');
     await ajax("GET",'','Products');
   } else {
-    alert("This product is not in stock");
+    alertMessage("This product is not in stock");
   }
-
 }
 
 function checkout(){

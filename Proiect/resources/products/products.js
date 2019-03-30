@@ -33,8 +33,7 @@ function drawProducts(){
           `
       }
     }
-    
-    var cartButtons = document.querySelectorAll(".product-to-cart-button");
-    existInCart(product, cartButtons[cartButtons.length-1]);
+
+    existsInCart(product);
   }
 }

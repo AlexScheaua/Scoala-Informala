@@ -26,8 +26,7 @@ function drawHome(){
         </div>
         `
       }
+      existsInCart(product);    
     }
-    var cartButtons = document.querySelectorAll(".product-to-cart-button");
-    existInCart(product, cartButtons[cartButtons.length-1]);
   }
 }
