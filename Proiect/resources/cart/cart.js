@@ -17,7 +17,7 @@ function drawCart(){
       <li class="cart-items-list-item d-flex justify-between align-center">
         <img class="cart-items-list-images" onclick="drawDetails('${product}')" src="${cartList[product].icon}" alt="${cartList[product].name}" />
         <p class="cart-items-list-name" onclick="drawDetails('${product}')">${cartList[product].name}</p>
-        <select name="" id="" class="cart-items-list-stock" onfocusout="modifyStock('${product}')"></select>
+        <select name="" id="" class="cart-items-list-stock" onchange="modifyStock('${product}')"></select>
         <button class="cart-items-list-button" onclick="modifyStock('${product}','remove')"><i class="fas fa-backspace"></i></button>
         <p class="cart-items-list-price">${(cartList[product].discountedPrice*cartList[product].stock).toLocaleString('de-DE')} RON</p>
       </li>
@@ -51,19 +51,24 @@ async function modifyStock(idx,remove){
   if(!remove){
     cartList[idx].stock = parseInt(event.target.value);
     itemList[idx].stock = productsStock - cartList[idx].stock
+    drawCart();
 
     await ajax("PUT",JSON.stringify(cartList[idx]),`Cart/${idx}`);
     await ajax("PUT",JSON.stringify(itemList[idx]),`Products/${idx}`);
 
-    ajax('GET','','Cart',drawCart)
+    ajax('GET','','Cart')
   } else {
     event.target.closest("button").setAttribute("onClick", "");
     alertMessage("Product removed from cart!")
     itemList[idx].stock = productsStock;
     itemList[idx].inCart = false;
+
+    delete cartList[idx];
+    drawCart();
+
     await ajax("PUT",JSON.stringify(itemList[idx]),`Products/${idx}`);
     await ajax("DELETE","",`Cart/${idx}`);
-    ajax('GET','','Cart',drawCart);
+    ajax('GET','','Cart');
   }
 }
 

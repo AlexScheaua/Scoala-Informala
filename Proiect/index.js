@@ -59,6 +59,15 @@ function cartIndicatorOnMenuOpen(){
   }
 }
 
+function onResize(){
+  let logoIcon = document.querySelector("#logo-icon>img");
+  if(window.innerWidth <= 768){
+    logoIcon.src = "resources/logo-icon.png";
+  } else {
+    logoIcon.src = "resources/logo-full.png";
+  }
+}
+
 function hideMenu(){
   let navbarItems = document.querySelectorAll(".navbar-item");
   let searchContainer = document.querySelector("#search-container");
@@ -102,9 +111,10 @@ function setLoadingGif(bool){
   }
 }
 
-//ajax request
+
 let itemList = {};
 let cartList = {};
+//ajax request
 async function ajax(method,body,idx,drawFunction){
   if(!method){
     method = "GET";
