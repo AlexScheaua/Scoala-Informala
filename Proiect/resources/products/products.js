@@ -25,7 +25,7 @@ function drawProducts(){
       if(discount > 0){
         productsPrice[productsPrice.length-1].innerHTML = `
           <p class="products-item-price-text-old">Price: ${itemList[product].price.toLocaleString('de-DE')}</p>
-          <p class="products-item-price-text-new">${itemList[product].discountedPrice.toLocaleString('de-DE')} RON</p>
+          <p class="products-item-price-text products-item-price-text-new">${itemList[product].discountedPrice.toLocaleString('de-DE')} RON</p>
         `
       } else {
         productsPrice[productsPrice.length-1].innerHTML = `
@@ -33,7 +33,53 @@ function drawProducts(){
           `
       }
     }
-
     existsInCart(product);
   }
 }
+
+  function sort(dataType,direction){
+    let productNameList = [].slice.call(document.querySelectorAll(".products-item-name"));
+    let productPriceList = [].slice.call(document.querySelectorAll(".products-item-price-text"));
+    let pageContent;
+    if(document.querySelector("#admin-content")){
+      pageContent = document.querySelector("#admin-content");
+    } else if (document.querySelector("#productsContent")){
+      pageContent = document.querySelector("#productsContent");
+    }
+    let sorted;
+    if(dataType === "name"){
+      if(direction === "ascending") {
+        sorted = productNameList.sort( (a, b) => (a.innerText > b.innerText) ? 1 : -1 );
+      } else if(direction === "descending"){
+        sorted = productNameList.sort( (a, b) => (a.innerText < b.innerText) ? 1 : -1 );
+      }
+
+      for(let i = 0, l = sorted.length; i < l; i++) {
+          pageContent.appendChild(sorted[i].parentElement);
+      }
+      document.querySelectorAll("#priceSortSelect")[0][0].setAttribute("selected","selected");
+    } else if(dataType === "price"){
+      if(direction === "descending") {
+        sorted = productPriceList.sort( function(a, b){
+          a = a.innerText.split(".");
+          a = a.join("");
+          b = b.innerText.split(".");
+          b = b.join("");
+          return parseInt(b) - parseInt(a);
+        })
+      } else if(direction === "ascending"){
+        sorted = productPriceList.sort( function(a, b){
+          a = a.innerText.split(".");
+          a = a.join("");
+          b = b.innerText.split(".");
+          b = b.join("");
+          return parseInt(a) - parseInt(b);
+        })
+      }
+
+      for(let i = 0, l = sorted.length; i < l; i++) {
+          pageContent.appendChild(sorted[i].parentElement.parentElement);
+      }
+      document.querySelectorAll("#nameSortSelect")[0][0].setAttribute("selected","selected");
+    }
+  }

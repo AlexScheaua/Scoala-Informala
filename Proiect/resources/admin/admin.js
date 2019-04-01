@@ -23,7 +23,7 @@ function drawAdmin(){
       if(discount > 0){
         productsPrice[productsPrice.length-1].innerHTML = `
           <p class="products-item-price-text-old">Price: ${itemList[product].price.toLocaleString('de-DE')}</p>
-          <p class="products-item-price-text-new">${itemList[product].discountedPrice.toLocaleString('de-DE')} RON</p>
+          <p class="products-item-price-text products-item-price-text-new">${itemList[product].discountedPrice.toLocaleString('de-DE')} RON</p>
         `
       } else {
         productsPrice[productsPrice.length-1].innerHTML = `
