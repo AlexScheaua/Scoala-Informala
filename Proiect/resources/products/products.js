@@ -38,6 +38,10 @@ function drawProducts(){
 }
 
   function sort(dataType,direction){
+    if(!direction){
+      return;
+    }
+    
     let productNameList = [].slice.call(document.querySelectorAll(".products-item-name"));
     let productPriceList = [].slice.call(document.querySelectorAll(".products-item-price-text"));
     let pageContent;
