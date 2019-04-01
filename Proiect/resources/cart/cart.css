@@ -16,12 +16,22 @@
   width: 10%;
 }
 
+.cart-items-list-images:hover {
+  cursor: pointer;
+}
+
 .cart-items-list-name {
   width: 70%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 0 10px;
+}
+
+.cart-items-list-name:hover {
+  cursor: pointer;
+  color: var(--lightBlue);
+  transition-duration: 0.3s;
 }
 
 .cart-items-list-button {

@@ -38,7 +38,6 @@ function drawDetails(idx){
   `
   existsInCart(idx, "details");
 
-
   carouselForDetails();
 }
 

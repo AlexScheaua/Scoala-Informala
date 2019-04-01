@@ -15,14 +15,26 @@ function drawCart(){
   for(let product in cartList){
     cartItemsList.innerHTML += `
       <li class="cart-items-list-item d-flex justify-between align-center">
-        <img class="cart-items-list-images" src="${cartList[product].icon}" alt="" />
-        <p class="cart-items-list-name">${cartList[product].name}</p>
-        <button class="cart-items-list-button" onclick="modifyStock('${product}','-')"><i class="fas fa-minus"></i></button>
-        <p class="cart-items-list-stock">${cartList[product].stock}</p>
-        <button class="cart-items-list-button" onclick="modifyStock('${product}','+')"><i class="fas fa-plus"></i></button>
+        <img class="cart-items-list-images" onclick="drawDetails('${product}')" src="${cartList[product].icon}" alt="${cartList[product].name}" />
+        <p class="cart-items-list-name" onclick="drawDetails('${product}')">${cartList[product].name}</p>
+        <select name="" id="" class="cart-items-list-stock" onfocusout="modifyStock('${product}')"></select>
+        <button class="cart-items-list-button" onclick="modifyStock('${product}','remove')"><i class="fas fa-backspace"></i></button>
         <p class="cart-items-list-price">${(cartList[product].discountedPrice*cartList[product].stock).toLocaleString('de-DE')} RON</p>
       </li>
     `
+    let cartItemslistStockSelect = document.querySelectorAll(".cart-items-list-stock")[document.querySelectorAll(".cart-items-list-stock").length-1];
+    for(let i = 0; i < itemList[product].stock + cartList[product].stock; i++){
+      if(i+1 == cartList[product].stock){
+        cartItemslistStockSelect.innerHTML += `
+          <option value="${i+1}" selected="selected">${i+1}</option>
+        `
+      } else {
+        cartItemslistStockSelect.innerHTML += `
+          <option value="${i+1}">${i+1}</option>
+        `
+      }
+    }
+
     totalPrice = totalPrice + (cartList[product].discountedPrice*cartList[product].stock)
   }
 
@@ -34,38 +46,25 @@ function drawCart(){
   `
 }
 
-async function modifyStock(idx,sign){
-  let buttons = document.querySelectorAll(".cart-items-list-button");
-  buttons[0].disabled = true;
-  buttons[1].disabled = true;
+async function modifyStock(idx,remove){
+  let productsStock = itemList[idx].stock + cartList[idx].stock;
+  if(!remove){
+    cartList[idx].stock = parseInt(event.target.value);
+    itemList[idx].stock = productsStock - cartList[idx].stock
 
-  if(sign === "+"){
-    if(itemList[idx].stock > 0){
-      cartList[idx].stock++;
-      itemList[idx].stock--;
-    } else {
-      alertMessage("Product is not in stock!")
-    }
-  } else if(sign === "-") {
-    if(cartList[idx].stock > 1){
-      cartList[idx].stock--;
-      itemList[idx].stock++;
-    } else {
-      alertMessage("Product removed from cart!")
-      itemList[idx].stock++;
-      itemList[idx].inCart = false;
-      await ajax("PUT",JSON.stringify(itemList[idx]),`Products/${idx}`);
-      await ajax("DELETE","",`Cart/${idx}`);
-      ajax('GET','','Cart',drawCart);
+    await ajax("PUT",JSON.stringify(cartList[idx]),`Cart/${idx}`);
+    await ajax("PUT",JSON.stringify(itemList[idx]),`Products/${idx}`);
 
-      return;
-    }
+    ajax('GET','','Cart',drawCart)
+  } else {
+    event.target.closest("button").setAttribute("onClick", "");
+    alertMessage("Product removed from cart!")
+    itemList[idx].stock = productsStock;
+    itemList[idx].inCart = false;
+    await ajax("PUT",JSON.stringify(itemList[idx]),`Products/${idx}`);
+    await ajax("DELETE","",`Cart/${idx}`);
+    ajax('GET','','Cart',drawCart);
   }
-
-  await ajax("PUT",JSON.stringify(cartList[idx]),`Cart/${idx}`);
-  await ajax("PUT",JSON.stringify(itemList[idx]),`Products/${idx}`);
-
-  ajax('GET','','Cart',drawCart)
 }
 
 function getCartItemsForIndicator(){
